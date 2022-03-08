@@ -10,7 +10,8 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:hero-icon-browser.helloWorld"
+        "onCommand:hero-icon-browser.helloWorld",
+		"onView:hero-icon-browser-sidebar"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
@@ -19,7 +20,25 @@
 				"command": "hero-icon-browser.helloWorld",
 				"title": "Hello World"
 			}
-		]
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "hero-icon-browser-view",
+					"title": "HeroIcon Browser",
+					"icon": "/media/icon.svg"
+				}
+			]
+		},
+		"views": {
+			"hero-icon-browser-view": [
+				{
+					"type": "webview",
+					"id": "hero-icon-browser-sidebar",
+					"name": "HeroIcon Browser"
+				}
+			]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "yarn run package",
