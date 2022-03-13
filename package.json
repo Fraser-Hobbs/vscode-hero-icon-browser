@@ -15,12 +15,6 @@
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
-		"commands": [
-			{
-				"command": "hero-icon-browser.helloWorld",
-				"title": "Hello World"
-			}
-		],
 		"viewsContainers": {
 			"activitybar": [
 				{
