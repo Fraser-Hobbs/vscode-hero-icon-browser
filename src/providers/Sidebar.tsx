@@ -42,14 +42,19 @@ export default class Sidebar implements WebviewViewProvider {
       // Get the local path to main script run in the webview, then convert it to a uri we can use in the webview.
       // Script to handle user action
       const scriptUri = webview.asWebviewUri(
-        Uri.joinPath(this.extensionPath, "script", "left-webview-provider.js")
-      );
-      const constantUri = webview.asWebviewUri(
-        Uri.joinPath(this.extensionPath, "script", "constant.js")
+        Uri.joinPath(this.extensionPath, "script", "sidebar.js")
       );
       // CSS file to handle styling
-      const styleUri = webview.asWebviewUri(
-        Uri.joinPath(this.extensionPath, "script", "left-webview-provider.css")
+      const styleVSCodeEUri = webview.asWebviewUri(
+        Uri.joinPath(this.extensionPath, "media", "vscode.css")
+      );
+      // CSS file to handle styling
+      const styleResetUri = webview.asWebviewUri(
+        Uri.joinPath(this.extensionPath, "media", "reset.css")
+      );
+
+      const styleSidebarUri = webview.asWebviewUri(
+        Uri.joinPath(this.extensionPath, "media", "Sidebar.css")
       );
 
   
@@ -64,11 +69,12 @@ export default class Sidebar implements WebviewViewProvider {
                   img-src vscode-resource: https:; font-src ${webview.cspSource};
                   style-src ${webview.cspSource} 'unsafe-inline'; script-src 'nonce-${nonce}';">           
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link href="${styleUri}" rel="stylesheet">
+            <link href="${styleVSCodeEUri}" rel="stylesheet">
+            <link href="${styleResetUri}" rel="stylesheet">
+            <link href="${styleSidebarUri}" rel="stylesheet">
           </head>
           <h2>SideBar Provider</h2>
           <body>
-            <script nonce="${nonce}" type="text/javascript" src="${constantUri}"></script>
             <script nonce="${nonce}" src="${scriptUri}"></script>
         </body>
       </html>`;
