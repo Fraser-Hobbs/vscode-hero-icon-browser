@@ -42,7 +42,7 @@ export default class Sidebar implements WebviewViewProvider {
       // Get the local path to main script run in the webview, then convert it to a uri we can use in the webview.
       // Script to handle user action
       const scriptUri = webview.asWebviewUri(
-        Uri.joinPath(this.extensionPath, "script", "sidebar.js")
+        Uri.joinPath(this.extensionPath, "out", "compiled/Sidebar.js")
       );
       // CSS file to handle styling
       const styleVSCodeEUri = webview.asWebviewUri(
@@ -73,7 +73,7 @@ export default class Sidebar implements WebviewViewProvider {
             <link href="${styleResetUri}" rel="stylesheet">
             <link href="${styleSidebarUri}" rel="stylesheet">
           </head>
-          <h2>SideBar Provider</h2>
+          
           <body>
             <script nonce="${nonce}" src="${scriptUri}"></script>
         </body>
